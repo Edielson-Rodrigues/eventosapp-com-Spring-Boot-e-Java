@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR" 
+    xmlns= "http://www.w3.org/1999/xhtml"
+    xmlns:th= "http://thymeleaf.org">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Eidelson Rodrigues">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/> <!-- Colocacar o endereço completo do materialize -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   	<script src="Inputmask-5.x/dist/inputmask.min.js"></script>
+    
+    <title>EventosApp</title>
+    
+</head>
+
+<body>
+   	<div class="alert alert-sucess alert-dismissible" role="alert" th:if="${not #strings.isEmpty(mensagem)}">
+   	
+   		<span th:text="${mensagem}"></span>
+   	</div>
+    
+
+	
+	
+</body>
+</html>

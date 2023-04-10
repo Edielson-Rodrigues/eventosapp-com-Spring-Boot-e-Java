@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR" 
+    xmlns:th="http://thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Eidelson Rodrigues">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link type="text/css" rel="stylesheet" href="style/styleCSS.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/> <!-- Colocacar o endereço completo do materialize -->
+    <title>EventosApp</title>
+    
+</head>
+
+<body>
+
+	<header>
+		 <nav>
+		    <div class="nav-wrapper">
+			     <a class="brand-logo">&ensp; Lista de Eventos</a>
+			     <ul id="nav-mobile" class="right hide-on-med-and-down">
+				 		<li><a class="waves-effect waves-light btn" href="/cadastrarEvento"><i class="material-icons left">add_circle_outline</i>Cadastrar Evento</a></li>
+			     </ul>
+		    </div>
+	  	</nav>
+	  	
+    </header>
+    
+	<div class="container tableEventos">
+		<table>
+		
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Local</th>
+					<th>Data</th>
+					<th>Horario</th>
+				</tr>
+			</thead>
+			
+			<tbody>	
+			
+				<tr th:each="evento: ${eventos}"> <!--Usando o thymeleaf para pegar os dados do banco-->	
+					<td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.codigoEvento)).build()}"><span th:text=" ${evento.nomeEvento}"></span></a></td>
+					<!-- na url coloca as inicias do controller # nome do método-->
+					<td><span th:text=" ${evento.local}"> </span></td>
+					<td><span th:text=" ${evento.data}"> </span></td>
+					<td><span th:text=" ${evento.horario}"> </span></td> <!--Recebe o nome da relação e seus respectivos atributos desejados-->
+					<td><a th:href="@{/deletarEvento/{codigoEvento}(codigoEvento=${evento.codigoEvento})}"><i class="material-icons">delete</i></a></td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script> <!-- Colocacar o endereço completo do materialize -->
+	
+</body>
+</html>
